@@ -28,10 +28,8 @@ public class ShoppingBasket {
         items.remove(item);
     }
 
-    public int emptyBasket () {
+    public void emptyBasket () {
         this.items.clear();
-        ShoppingBasket basket = this.items.size();
-        return basket;
     }
 
 }
