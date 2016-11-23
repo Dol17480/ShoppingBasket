@@ -16,6 +16,7 @@ public class ShoppingBasketTest {
     ShoppingBasket basket;
     Item nappies;
     Item beer;
+    Customer customer;
 
 
     @Before
@@ -23,6 +24,7 @@ public class ShoppingBasketTest {
         basket = new ShoppingBasket();
         nappies = new Item("Nappies", true, 8.0);
         beer = new Item("Beer", false, 10.0);
+        customer = new Customer("David", true);
     }
 
 
@@ -58,6 +60,36 @@ public class ShoppingBasketTest {
         basket.addItem(beer);
         assertEquals(18.0, basket.getBasketCost());
     }
+
+    @Test
+    public void testCanGetBogofItems () {
+        basket.addItem(nappies);
+        basket.addItem(beer);
+        assertEquals(1, basket.getBasketBogof());
+    }
+
+    @Test
+    public void testCanGetTotalOfBogof () {
+        basket.addItem(nappies);
+        basket.addItem(nappies);
+        basket.addItem(nappies);
+        basket.addItem(nappies);
+        basket.addItem(beer);
+        assertEquals(32.0, basket.getTotalPriceBogof());
+    }
+
+    @Test
+    public void testCanGiveDiscount () {
+        basket.addItem(beer);
+        basket.addItem(beer);
+        basket.addItem(beer);
+        basket.addItem(beer);
+        basket.addItem(beer);
+        assertEquals(50.0, basket.getTotalPriceBogof());
+    }
+    }
+
+
 
 
 
