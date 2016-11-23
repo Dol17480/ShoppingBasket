@@ -7,14 +7,14 @@ package com.example.user.shoppingbasket;
 public class Item {
 
     private String itemName;
-    private int quantity;
-    private double totalPrice;
+    private boolean bogof;
+    private double price;
 
 
-    public Item(String itemName, int quantity, double totalPrice) {
+    public Item(String itemName, boolean bogof, double price) {
         this.itemName = itemName;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
+        this.bogof = bogof;
+        this.price = price;
     }
 
 
@@ -22,12 +22,16 @@ public class Item {
         return itemName;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public boolean getitemBogof() {
+        return bogof;
     }
 
-    public double getTotalPrice() {
-        return totalPrice;
+    public double getPrice() {
+        return price;
     }
 
+    @Override
+    public String toString() {
+        return itemName;
+    }
 }

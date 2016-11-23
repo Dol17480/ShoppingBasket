@@ -5,6 +5,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static junit.framework.Assert.assertEquals;
+
 /**
  * Created by user on 22/11/2016.
  */
@@ -12,40 +14,49 @@ import org.junit.Test;
 public class ShoppingBasketTest {
 
     ShoppingBasket basket;
-    Item item;
+    Item nappies;
+    Item beer;
+
 
     @Before
     public void before() {
         basket = new ShoppingBasket();
+        nappies = new Item("Nappies", true, 8.0);
+        beer = new Item("Beer", false, 10.0);
     }
 
 
     @Test
-    public void testCreateEmptyShoppingBasket () {
+    public void testCreateEmptyShoppingBasket() {
         Assert.assertEquals(0, basket.getItemCount());
     }
 
     @Test
-    public void testCanAddToBasket () {
-        Item beer = new Item ("Beer", 10, 20.0);
+    public void testCanAddToBasket() {
         basket.addItem(beer);
         Assert.assertEquals(1, basket.getItemCount());
     }
 
     @Test
-    public void testCanRemoveFromBasket () {
-        Item nappies = new Item ("Nappies", 100, 50.0);
+    public void testCanRemoveFromBasket() {
         basket.addItem(nappies);
         basket.removeItem(nappies);
         Assert.assertEquals(0, basket.getItemCount());
     }
 
     @Test
-    public void testCanEmptyBasket () {
-        Item nappies = new Item ("Nappies", 100, 50.0);
+    public void testCanEmptyBasket() {
         basket.addItem(nappies);
         basket.emptyBasket();
         Assert.assertEquals(0, basket.getItemCount());
+    }
+
+
+    @Test
+    public void testCanGetCostOfBasket () {
+        basket.addItem(nappies);
+        basket.addItem(beer);
+        assertEquals(18.0, basket.getBasketCost());
     }
 
 

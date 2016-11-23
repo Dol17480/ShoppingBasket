@@ -1,6 +1,7 @@
 package com.example.user.shoppingbasket;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Created by user on 22/11/2016.
@@ -30,6 +31,16 @@ public class ShoppingBasket {
 
     public void emptyBasket () {
         this.items.clear();
+    }
+
+
+    public double getBasketCost () {
+        Double totalPrice = 0.0;
+        for ( Item aItem : items ) {
+
+            totalPrice += aItem.getPrice();
+        }
+        return totalPrice;
     }
 
 }
